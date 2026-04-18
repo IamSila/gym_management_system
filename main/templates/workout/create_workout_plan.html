@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/workout/create_workout_plan.css' %}" />
+{% endblock css %}
+{% block content %}
+<div class="container">
+    <h1>Create Workout Plan</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}

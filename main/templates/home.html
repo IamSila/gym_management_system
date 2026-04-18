@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<h3>Welcome {{ user.username }}</h3>
+{% if user.is_superuser %}
+<div class="container mt-5">
+  <h2 class="mb-4">Statistics</h2>
+  <div class="list-group">
+    <a class="btn btn-info mb-3" href="{% url 'attendance_totalstats_today' %}">
+      <span class="btn-text">Total Attendance Count - Today</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'attendance_totalstats' %}">
+      <span class="btn-text">Total Attendance Count - Current Month</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'total_members_count' %}">
+      <span class="btn-text">Total Members Count</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'gender_count' %}">
+      <span class="btn-text">Total Gender Count</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'total_trainers_count' %}">
+      <span class="btn-text">Total Trainers Count</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'total_active_members' %}">
+      <span class="btn-text">Total Active Members</span>
+    </a>
+    <a class="btn btn-info mb-3" href="{% url 'total_expired_memberships' %}">
+      <span class="btn-text">Total Expired Memberships</span>
+    </a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

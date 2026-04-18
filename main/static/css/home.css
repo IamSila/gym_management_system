@@ -1,0 +1,463 @@
+/* home.css */
+:root {
+    /* Theme Colors */
+    --primary-green: #D9FA70;
+    --dark-bg: #282828;
+    --white: #FFFFFF;
+    --gray-medium: #595959;
+
+    /* Additional Shades */
+    --green-dark: #c5e65a;
+    --green-light: #e2ff8a;
+    --dark-lighter: #353535;
+    --dark-darker: #1e1e1e;
+    --gray-light: #6e6e6e;
+    --gray-dark: #4a4a4a;
+
+    /* Gradients */
+    --gradient-green: linear-gradient(135deg, #D9FA70 0%, #b8e04e 100%);
+    --gradient-dark: linear-gradient(135deg, #353535 0%, #1e1e1e 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-green: 0 4px 12px rgba(217, 250, 112, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--dark-bg);
+    color: var(--white);
+    font-family: 'Inter', 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Animated Background Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(217, 250, 112, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(217, 250, 112, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Welcome Banner */
+.container h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient-green);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+    animation: fadeInDown 0.6s ease;
+}
+
+.container h3::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-green);
+    border-radius: 3px;
+    animation: expandWidth 0.8s ease 0.3s forwards;
+    transform-origin: left;
+}
+
+/* Statistics Section */
+.container.mt-5 {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.container.mt-5 h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.01em;
+}
+
+.container.mt-5 h2::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gray-medium);
+    opacity: 0.3;
+}
+
+.container.mt-5 h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-green);
+    border-radius: 2px;
+    transition: width var(--transition-normal);
+}
+
+.container.mt-5:hover h2::after {
+    width: 80px;
+}
+
+/* Statistics Cards Grid */
+.list-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    list-style: none;
+}
+
+/* Button Styles - FIXED HOVER VISIBILITY */
+.btn-info {
+    background: var(--dark-lighter);
+    border: 1px solid var(--gray-medium);
+    color: var(--white);
+    padding: 1.25rem 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: left;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.3px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Pseudo-element for hover background */
+.btn-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-green);
+    transition: left var(--transition-normal);
+    z-index: 0;
+}
+
+/* Text wrapper for proper layering */
+.btn-info .btn-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color var(--transition-normal);
+}
+
+/* Add arrow icon */
+.btn-info .btn-text::after {
+    content: '→';
+    font-size: 1.2rem;
+    transition: transform var(--transition-normal);
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+/* Hover states - FIXED */
+.btn-info:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-green);
+    box-shadow: var(--shadow-green);
+}
+
+.btn-info:hover::before {
+    left: 0;
+}
+
+/* Text turns DARK on hover for contrast against green background */
+.btn-info:hover .btn-text {
+    color: var(--dark-bg);
+    font-weight: 600;
+}
+
+.btn-info:hover .btn-text::after {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--dark-bg);
+}
+
+/* Active state */
+.btn-info:active {
+    transform: translateY(0px);
+}
+
+/* Focus States */
+.btn-info:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(217, 250, 112, 0.4);
+    border-color: var(--primary-green);
+}
+
+.btn-info:focus .btn-text {
+    color: var(--white);
+}
+
+/* Keep text white when focused but not hovered */
+.btn-info:focus:not(:hover) .btn-text {
+    color: var(--white);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 80px;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(217, 250, 112, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(217, 250, 112, 0);
+    }
+}
+
+/* Staggered Animation for Cards */
+.list-group .btn-info {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.list-group .btn-info:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.list-group .btn-info:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.list-group .btn-info:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.list-group .btn-info:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.list-group .btn-info:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.list-group .btn-info:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+.list-group .btn-info:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+/* Hover effect on container - subtle scale for non-hovered cards */
+.container.mt-5:hover .btn-info:not(:hover) {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-darker);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray-medium);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container h3 {
+        font-size: 1.75rem;
+    }
+
+    .container.mt-5 h2 {
+        font-size: 1.5rem;
+    }
+
+    .list-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .btn-info {
+        padding: 1rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .container.mt-5 {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    .container h3::after {
+        width: 60px;
+    }
+
+    .btn-info .btn-text::after {
+        font-size: 1rem;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .list-group {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .container h3 {
+        font-size: 2rem;
+    }
+}
+
+/* Premium Card Effect for First Admin Stat */
+.list-group .btn-info:first-child {
+    border-top: 2px solid var(--primary-green);
+}
+
+/* Loading State (optional) */
+.btn-info.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-info.loading .btn-text {
+    opacity: 0.7;
+}
+
+.btn-info.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(217, 250, 112, 0.2), transparent);
+    animation: loading 1.5s infinite;
+    z-index: 2;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .btn-info {
+        border: 1px solid #ccc;
+        background: white;
+        color: black;
+        box-shadow: none;
+    }
+
+    .btn-info::before {
+        display: none;
+    }
+
+    .btn-info .btn-text {
+        color: black !important;
+    }
+}

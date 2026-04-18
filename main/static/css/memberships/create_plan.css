@@ -1,0 +1,458 @@
+/* create_plan.css - Create Membership Package Page Styles */
+
+:root {
+    /* Theme Colors */
+    --primary-green: #D9FA70;
+    --dark-bg: #282828;
+    --white: #FFFFFF;
+    --gray-medium: #595959;
+
+    /* Additional Shades */
+    --green-dark: #c5e65a;
+    --green-light: #e2ff8a;
+    --dark-lighter: #353535;
+    --dark-darker: #1e1e1e;
+    --gray-light: #6e6e6e;
+    --gray-dark: #4a4a4a;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-primary: 0 4px 12px rgba(217, 250, 112, 0.2);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* Main Container Adjustment */
+.content {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+h1 {
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+    animation: fadeInDown 0.5s ease;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+    border-radius: 3px;
+}
+
+/* Form Container */
+form {
+    background: var(--dark-lighter);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-medium);
+    animation: fadeInUp 0.6s ease;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+form:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Form Fields Styling */
+form p {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels */
+form label {
+    display: block;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: color var(--transition-fast);
+}
+
+form label::before {
+    content: '✦';
+    color: var(--primary-green);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all var(--transition-fast);
+}
+
+form p:hover label::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Input Fields */
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--dark-bg);
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Specific styling for number input */
+form input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+form input[type="number"]::-webkit-inner-spin-button,
+form input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.5;
+}
+
+/* Textarea specific */
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* Focus States */
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(217, 250, 112, 0.2);
+    background: var(--dark-darker);
+    transform: translateY(-2px);
+}
+
+/* Hover States */
+form input:hover,
+form select:hover,
+form textarea:hover {
+    border-color: var(--gray-light);
+}
+
+/* Placeholder Styling */
+form input::placeholder,
+form textarea::placeholder {
+    color: var(--gray-light);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Select Dropdown Styling */
+form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D9FA70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+    padding-right: 2.5rem;
+}
+
+form select option {
+    background: var(--dark-bg);
+    color: var(--white);
+    padding: 0.75rem;
+}
+
+form select option:hover {
+    background: var(--primary-green);
+    color: var(--dark-bg);
+}
+
+/* Help Text */
+form .helptext {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-light);
+    margin-top: 0.25rem;
+}
+
+/* Error Messages */
+form .errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+form .errorlist li {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #ff6b6b;
+    margin-bottom: 0.25rem;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+    border: none;
+    color: var(--dark-bg);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+form button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+form button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-primary);
+}
+
+form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Price Field Special Styling */
+form input[name="price"] {
+    position: relative;
+}
+
+form p:has(input[name="price"]) label::after {
+    content: '💰';
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Duration Field Special Styling */
+form p:has(input[name="duration"]) label::after {
+    content: '⏱️';
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    form label {
+        font-size: 0.85rem;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form select,
+    form textarea {
+        padding: 0.7rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    form button[type="submit"] {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    form button[type="submit"] {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading State for Submit Button */
+form button[type="submit"].loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+form button[type="submit"].loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid var(--dark-bg);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success Message Styling */
+.success-message {
+    background: rgba(217, 250, 112, 0.1);
+    border-left: 4px solid var(--primary-green);
+    color: var(--primary-green);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.3s ease;
+}
+
+/* Card Preview (Optional) */
+.plan-preview {
+    background: var(--dark-bg);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px dashed var(--gray-medium);
+    display: none;
+}
+
+.plan-preview.active {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+}
+
+.plan-preview h4 {
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+}
+
+/* Required Field Indicator */
+form label[for^="id_"]:after {
+    content: '*';
+    color: var(--primary-green);
+    margin-left: 0.25rem;
+}
+
+/* Fieldset Grouping (if needed) */
+fieldset {
+    border: 1px solid var(--gray-medium);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    color: var(--primary-green);
+    font-weight: 600;
+    padding: 0 0.75rem;
+    width: auto;
+    font-size: 1rem;
+    border: none;
+}
+
+/* Tooltip styling */
+.tooltip-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: var(--gray-medium);
+    color: var(--dark-bg);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: 0.5rem;
+    cursor: help;
+    transition: all var(--transition-fast);
+}
+
+.tooltip-icon:hover {
+    background: var(--primary-green);
+    transform: scale(1.1);
+}
