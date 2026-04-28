@@ -33,7 +33,7 @@ A comprehensive solution for efficiently managing various aspects of a fitness f
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/mithun-t/gym-management-system.git
+   git clone https://github.com/IamSila/gym_management_system
    cd gym-management-system
 2. **Create and activate a virtual environment:**
     ```bash
